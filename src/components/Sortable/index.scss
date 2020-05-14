@@ -1,35 +1,56 @@
-.sort-component {
+.sortable {
   width: 800px;
-  margin: 60px auto;
+  margin: 30px auto;
+  $root: &;
 
-  .ep-sortable-handle {
-    position: relative;
-    float: right;
-    font-family: "Glyphicons Halflings";
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1;
-
-    &:hover {
-      cursor: move;
-    }
-
-    &::before {
-      content: "\e068";
-    }
+  &__group {
+    padding-left: 0;
   }
 
-  .ep-sortable-ghost {
+  &__item {
+    display: block;
+    position: relative;
+    margin-bottom: -1px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    text-align: left;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__value {
+    font-weight: 500;
+  }
+
+  &__handle {
+    display: block;
+    color: #42b983;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: move;
+  }
+
+  &__ghost {
     background-color: #ebf0f2;
 
-    .sort-field {
+    #{$root}__content {
       opacity: 0;
     }
   }
 
-  .ep-sortable-drag {
+  &__drag {
     background-color: #fff;
     box-shadow: 0 18px 6px 0 rgba(99, 101, 102, 0.24);
     opacity: 1 !important;
+  }
+
+  &__result {
+    padding: 20px;
+    background-color: #f7fbfc;
   }
 }

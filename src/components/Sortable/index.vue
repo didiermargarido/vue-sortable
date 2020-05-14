@@ -1,20 +1,28 @@
 <template>
-  <div class="sort-component">
+  <div class="sortable">
     <ul
       v-sortable="options"
-      class="list-group"
+      class="sortable__group"
     >
       <li
         v-for="i in items"
         :key="i.id"
-        class="list-group-item"
+        class="sortable__item"
       >
-        <div class="sort-field">
-          ID: {{ i.id }} <i class="ep-sortable-handle"></i>
+        <div class="sortable__content">
+          <span class="sortable__value">
+            {{ i.name }}
+          </span>
+          <span class="sortable__handle">
+            Drag
+          </span>
         </div>
       </li>
     </ul>
-    {{ items }}
+    <h2>Result</h2>
+    <div class="sortable__result">
+      {{ items }}
+    </div>
   </div>
 </template>
 
@@ -32,21 +40,42 @@ export default {
   },
   data() {
     return {
-      items: [{id: 1},{id: 2},{id: 3},{id: 4},{id: 5}],
+      items: [
+        {
+          id: 1,
+          name: 'Foobar'
+        },
+        {
+          id: 2,
+          name: 'Foo'
+        },
+        {
+          id: 3,
+          name: 'Bar'
+        },
+        {
+          id: 4,
+          name: 'Baz'
+        },
+        {
+          id: 5,
+          name: 'Qux'
+        }
+      ],
       options: {
         animation: 150,
         forceFallback: true,
-        handle: '.ep-sortable-handle',
-        ghostClass: 'ep-sortable-ghost',
-        dragClass: 'ep-sortable-drag',
+        handle: '.sortable__handle',
+        ghostClass: 'sortable__ghost',
+        dragClass: 'sortable__drag',
         onEnd: this.reOrder
       }
     }
   },
   methods: {
-    reOrder({oldIndex, newIndex}) {
-      const movedItem = this.items.splice(oldIndex, 1)[0]
-      this.items.splice(newIndex, 0, movedItem)
+    reOrder({ oldIndex, newIndex }) {
+      const movedItem = this.items.splice(oldIndex, 1)[0];
+      this.items.splice(newIndex, 0, movedItem);
     }
   }
 }
