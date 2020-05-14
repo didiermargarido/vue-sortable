@@ -1,0 +1,35 @@
+.sort-component {
+  width: 800px;
+  margin: 60px auto;
+
+  .ep-sortable-handle {
+    position: relative;
+    float: right;
+    font-family: "Glyphicons Halflings";
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+
+    &:hover {
+      cursor: move;
+    }
+
+    &::before {
+      content: "\e068";
+    }
+  }
+
+  .ep-sortable-ghost {
+    background-color: #ebf0f2;
+
+    .sort-field {
+      opacity: 0;
+    }
+  }
+
+  .ep-sortable-drag {
+    background-color: #fff;
+    box-shadow: 0 18px 6px 0 rgba(99, 101, 102, 0.24);
+    opacity: 1 !important;
+  }
+}
