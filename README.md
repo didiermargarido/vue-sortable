@@ -6,7 +6,7 @@ Easily add drag-and-drop sorting to your Vue.js application using **sortablejs**
 
 View Demo: https://didiermargarido.github.io/vue-sortable/
 
-### Documentation
+## Documentation
 
 View Library: https://github.com/SortableJS/Sortable (sortableJs)
 
@@ -16,12 +16,12 @@ npm install
 npm run serve
 ```
 
-### Lint
+## Lint
 ```
 npm run lint
 ```
 
-### Build
+## Build
 ```
 npm run build
 ```
