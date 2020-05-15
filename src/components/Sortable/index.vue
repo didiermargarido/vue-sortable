@@ -11,7 +11,8 @@
       >
         <div class="sortable__content">
           <span class="sortable__value">
-            {{ i.name }}
+            <span data-rank>{{ i.rank }}</span>
+            ) {{ i.name }}
           </span>
           <span class="sortable__handle">
             Drag
@@ -43,39 +44,52 @@ export default {
       items: [
         {
           id: 1,
+          rank: 1,
           name: 'Foobar'
         },
         {
           id: 2,
+          rank: 2,
           name: 'Foo'
         },
         {
           id: 3,
+          rank: 3,
           name: 'Bar'
         },
         {
           id: 4,
+          rank: 4,
           name: 'Baz'
         },
         {
           id: 5,
+          rank: 5,
           name: 'Qux'
         }
       ],
       options: {
         animation: 150,
         forceFallback: true,
+        fallbackClass: 'sortable__clone',
         handle: '.sortable__handle',
         ghostClass: 'sortable__ghost',
         dragClass: 'sortable__drag',
-        onEnd: this.reOrder
+        onChange: this.onChange,
+        onEnd: this.onEnd
       }
     }
   },
   methods: {
-    reOrder({ oldIndex, newIndex }) {
+    onChange({ newIndex }) {
+      document.querySelector(`.${this.options.fallbackClass} [data-rank]`).innerHTML = ++newIndex;
+    },
+    onEnd({ oldIndex, newIndex }) {
       const movedItem = this.items.splice(oldIndex, 1)[0];
       this.items.splice(newIndex, 0, movedItem);
+      this.items.forEach((key, i) => {
+        this.items[i].rank = ++i;
+      });
     }
   }
 }
