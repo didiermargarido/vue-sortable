@@ -3,6 +3,14 @@
   margin: 30px auto;
   $root: &;
 
+  &__add {
+    padding: 10px 20px;
+    border: 0;
+    background-color: #42b983;
+    color: #fff;
+    cursor: pointer;
+  }
+
   &__group {
     padding-left: 0;
   }
@@ -39,7 +47,7 @@
     background-color: #ebf0f2;
 
     #{$root}__content {
-      // opacity: 0;
+      opacity: 0;
     }
   }
 
